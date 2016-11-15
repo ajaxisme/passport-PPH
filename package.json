@@ -1,29 +1,29 @@
 {
-  "name": "pph",
-  "version": "0.0.1",
-  "description": "A password storage scheme that prevents an attacker from cracking passwords individually.",
-  "keywords": [
-    "shamir secret sharing",
-    "password storage",
-    "password security",
-    "poly password hasher"
-  ],
-  "homepage": "https://polypasswordhasher.poly.edu/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/PolyPasswordHasher/PolyPasswordHasher-JavaScript.git"
-  },
-  "license": "MIT",
-  "files": [
-    "polypasswordhasher.js",
-    "testpolypasswordhasher.js",
-    "testisovalpolypasswordhasher.js"
-  ],
-  "main": "polypasswordhasher.js",
+  "name": "passport-pph",
+  "version": "1.0.0",
+  "description": "Passport Strategy for PolyPasswordHasher",
+  "main": "app.js",
   "dependencies": {
     "crypto": "0.0.3",
     "fs": "0.0.2",
+    "nodemon": "^1.11.0",
+    "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "secrets.js": "0.1.8"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajaxisme/passport-PPH.git"
+  },
+  "author": "Abhinav Jha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajaxisme/passport-PPH/issues"
+  },
+  "homepage": "https://github.com/ajaxisme/passport-PPH#readme"
 }
