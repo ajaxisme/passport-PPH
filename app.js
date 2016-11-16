@@ -1,27 +1,37 @@
+var express = require('express');
 var passport = require('passport');
-var passport_local = require('passport-local');
-var PPH = require('./polypasswordhasher.js');
+var PPHStrategy = require('./lib').Strategy;
 
-var secrets = require('./secrets');
+passport.use(new PPHStrategy());
 
-var THRESHOLD = 10;
+var app = express();
 
-var pph = new PPH(THRESHOLD, 'securepasswords');
+app.use(passport.initialize());
 
-var secrets = secrets.secrets;
+app.get('/', function(req, res) {
+    console.log('Hello World');
 
-try{
-    pph.unlock_password_data(secrets);
-}
-catch(e) {
-    console.log("Less number of shares than threshold");
-}
+    var req = {
+        "username" : "alice",
+        "password" : "kitten"
+    };
 
-if(pph.is_valid_login("alice", "kitten")){
-    console.log("Valid");
-}
-else{
-    console.log("Invalid");
-}
+    passport.authenticate('pph', function(err, user, info){
+        if(err)
+            throw err;
 
-console.log('Works');
+        if(!user){
+            res.send("Invalid Username/Password");
+        }
+        else{
+            res.send(user);
+        }
+            
+    })(req); 
+
+
+});
+
+app.listen(3000, function() {
+    console.log('Listening on 3000');
+});
