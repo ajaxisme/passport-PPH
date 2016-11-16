@@ -1,4 +1,5 @@
 securepasswords
 node_modules/*
+secrets
 lib/secrets
 lib/securepasswords

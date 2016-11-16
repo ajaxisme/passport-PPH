@@ -1,15 +1,17 @@
 var express = require('express');
 var passport = require('passport');
 var PPHStrategy = require('./lib').Strategy;
+var secrets = require('./secrets').secrets;
 
-passport.use(new PPHStrategy());
+passport.use(new PPHStrategy(
+    {"threshold": 10, "filename": "lib/securepasswords", "secrets": secrets}
+));
 
 var app = express();
 
 app.use(passport.initialize());
 
 app.get('/', function(req, res) {
-    console.log('Hello World');
 
     var req = {
         "username" : "alice",
