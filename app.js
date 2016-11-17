@@ -4,7 +4,7 @@ var PPHStrategy = require('./lib').Strategy;
 var secrets = require('./secrets').secrets;
 
 passport.use(new PPHStrategy(
-    {"threshold": 10, "filename": "lib/securepasswords", "secrets": secrets}
+    {"threshold": 10, "filename": "securepasswords", "secrets": secrets}
 ));
 
 var app = express();
