@@ -4,7 +4,9 @@
   "description": "Passport Strategy for PolyPasswordHasher",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "crypto": "0.0.3",
+    "ejs": "^2.5.2",
     "express": "^4.14.0",
     "fs": "0.0.2",
     "nodemon": "^1.11.0",
@@ -15,7 +17,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "nodemon examples/app.js",
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

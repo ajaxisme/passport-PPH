@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        <h1> Login to your app </h1>
+        <% if (messages) { %>
+        <p><%= messages %></p>
+        <% } %>
+        <form name="form" action="/login" method="post">
+            <label>Username</label><input type="text" name="username" />
+            <label>Password</label><input type="password" name="password" />
+            <input type="submit" value="Login" />
+        </form>
+    </body>
+</html>
