@@ -1,11 +1,10 @@
 var express = require('express');
 var passport = require('passport');
 var PPHStrategy = require('./lib').Strategy;
-var secrets = require('./secrets').secrets;
 var bodyParser = require('body-parser');
 
 passport.use(new PPHStrategy(
-    {"threshold": 10, "filename": "securepasswords", "secrets": secrets}
+    {"threshold": 10, "filename": "securepasswords"}
 ));
 
 var app = express();
@@ -35,7 +34,7 @@ app.post('/login', function(req, res) {
 
     passport.authenticate('pph', function(err, user, info){
         if(err){
-            console.log('No such user');
+            res.render('login', { messages: "No such user"});
         }
 
         if(!user){
@@ -43,7 +42,6 @@ app.post('/login', function(req, res) {
         }
         else{
             res.send("Welcome " + user);
-            //res.send(user);
         }
             
     })(req.body); 
